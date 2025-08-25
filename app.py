@@ -15,7 +15,7 @@ def home():
 @app.route('/predict',methods=['GET']) # '/predict':-decorater name 
 def predict():
     temp=request.args.get('temp') #temp :input value,request-IoT takes through requests
-    temp=(float)temp              #input always return str ,convert to float
+    temp=float(temp)              #input always return str ,convert to float
     data=[[temp]]                 #preparing data i.e. in 2D array [[]]
     result=ai.predict(data)       #ai predicts an array
     #api always have string format as return type
@@ -26,6 +26,7 @@ def predict():
 if(__name__=="__main__"):
     #host:IPv4 i.e.a.b.c.d,0.0.0.0 means take respective websites/machine's IP address
     app.run(host='0.0.0.0',port=5000,debug=True) 
+
 
 
 
